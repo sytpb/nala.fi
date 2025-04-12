@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .swiper-pagination-bullet {
+        --swiper-pagination-bullet-inactive-color: white;
+        --swiper-pagination-bullet-active-color: white;
+        --swiper-pagination-bullet-width: 0.6rem;
+        /* Increase width */
+        --swiper-pagination-bullet-height: 0.6rem;
+        /* Increase height */
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestaa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+
+<body class="bg-slate-900 text-white">
+    <header class="flex justify-between items-center p-5 border-b border-gray-700">
+        <h1 class="text-2xl font-bold">LOGO</h1>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="#" class="hover:text-purple-400">Home</a></li>
+                <li><a href="#" class="hover:text-purple-400">Skills</a></li>
+                <li><a href="#" class="hover:text-purple-400">Projects</a></li>
+            </ul>
+        </nav>
+        <button class="border px-4 py-2 rounded-lg border-gray-600 hover:bg-gray-800">Let's Connect</button>
+    </header>
+
+    <div class="text-center p-6">
+        <div class="inline-flex space-x-4 bg-gray-800 px-4 py-2 rounded-full">
+            <button class="tab-btn px-6 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500"
+                data-target="bag">Bag</button>
+            <button class="tab-btn px-6 py-2 rounded-lg bg-gray-700" data-target="ornaments">Ornaments</button>
+            <button class="tab-btn px-6 py-2 rounded-lg bg-gray-700" data-target="office">Office</button>
+        </div>
+    </div>
+
+
+    <section class="w-[70%] m-auto">
+        <div id="bag" class="tab-content w-full grid lg:grid-cols-3 xl:grid-cols-5 gap-6 p-6 m-auto">
+
+        </div>
+        <div id="ornaments" class="tab-content w-full grid lg:grid-cols-3 xl:grid-cols-5 gap-6 p-6 m-auto hidden">
+
+        </div>
+        <div id="office" class="tab-content w-full grid lg:grid-cols-3 xl:grid-cols-5 gap-6 p-6 m-auto hidden">
+
+        </div>
+    </section>
+
+
+    <div
+        class="swiper-container w-3/4 h-3/4 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-600/95 hidden overflow-hidden rounded-lg">
+        <div id="swiper-wrapper" class="swiper-wrapper">
+        </div>
+        <div class="swiper-pagination w-10 h-10"></div>
+        <div class="swiper-button-prev text-white w-30 h-30"></div>
+        <div class="swiper-button-next text-white w-30 h-30"></div>
+        <button id="close-swiper"
+            class="absolute top-2 right-4 transform -translate-x-1/2 text-white cursor-pointer font-bold p-2 z-[100]">Close</button>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        const _products = {
+            bag: [
+                { sort: './assets/images/bag/bzd01', title: 'Textile Bag', desc: 'Fashionable Eco-friendly', count: 5 },
+                { sort: './assets/images/bag/zd01', title: 'Cardboard Bag', desc: 'Trendy Designer', count: 6 },
+                { sort: './assets/images/public', title: 'Customization Process', desc: 'We Make Fun', count: 1 },
+                { sort: './assets/images/bag/zd02', title: 'Cardboard Bag', desc: 'Classic Elegant', count: 5 },
+                { sort: './assets/images/bag/fbd01', title: 'Canvas Bag', desc: 'Durable Versatile', count: 4 },
+                { sort: './assets/images/bag/fbd02', title: 'Canvas Bag', desc: 'Classic style', count: 6 },
+                { sort: './assets/images/bag/bwd01', title: 'Insulated Bag', desc: 'Durable Thermal', count: 5 },
+                { sort: './assets/images/bag/npz01', title: 'Kraft Paper Bag', desc: 'Natural Strong', count: 5 },
+                { sort: './assets/images/bag/dbd01', title: 'Tyvek Bag', desc: 'Durable lightweight', count: 9 }
+
+            ],
+            ornaments: [
+                { sort: './assets/images/ornament/bxt01', title: 'Crystal Fridge Magnet', desc: 'Company Logo Show ', count: 6 },
+                { sort: './assets/images/ornament/ysk01', title: 'Metal Keychain', desc: 'Stylish Impressive ', count: 3 },
+                { sort: './assets/images/public', title: 'Customization Process', desc: 'We Make Fun', count: 1 },
+                { sort: './assets/images/ornament/ykl01', title: 'Acrylic Night Light', desc: 'Illuminating Sleek', count: 8 },
+                { sort: './assets/images/ornament/ysk02', title: 'Crystal Keychain', desc: 'Elegant Durable', count: 8 },
+                { sort: './assets/images/ornament/hz01', title: 'Commemorative Badge', desc: 'Symbolic Memorial', count: 6 },
+                { sort: './assets/images/ornament/zsq01', title: 'Bamboo Bookmark', desc: 'Eco-friendly Fashionable', count: 4 },
+                { sort: './assets/images/ornament/zls01', title: 'Tibetan Tassel', desc: 'Company Logo Show', count: 7 }
+            ],
+            office: [
+                { sort: './assets/images/office/cxb01', title: 'Rewritable Borad', desc: 'Durable Eco-friendly Light', count: 7 },
+                { sort: './assets/images/office/lp01', title: 'Google Review', desc: 'Convenient Intelligent', count: 6 },
+                { sort: './assets/images/office/gift01', title: 'Gift', desc: 'Bamboo Eco-friendly', count: 4 },
+                { sort: './assets/images/office/storage01', title: 'Office Storage', desc: 'Bamboo Eco-friendly', count: 7 }
+            ]
+        };
+        let swiper; // Declare swiper outside
+
+        function products(type = 'bag') {
+            const list = document.getElementById(type);
+            list.innerHTML = '';
+
+            const items = _products[type];
+
+            items.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'image-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition transform cursor-pointer';
+                card.dataset.type = type;
+                card.dataset.index = index; // Add data-index here
+
+                const img = document.createElement('img');
+                img.src = `${item.sort}/0.webp`;
+                img.alt = item.title || 'Image';
+                img.className = 'w-full';
+
+                const textDiv = document.createElement('div');
+                textDiv.className = 'p-4';
+
+                const titleH2 = document.createElement('h2');
+                titleH2.className = 'text-lg font-semibold';
+                titleH2.textContent = item.title || '';
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-400';
+                descP.textContent = item.desc || '';
+
+                textDiv.appendChild(titleH2);
+                textDiv.appendChild(descP);
+
+                card.appendChild(img);
+                card.appendChild(textDiv);
+                list.appendChild(card);
+            });
+        }
+
+        function buildSwiper(item) {
+
+
+            const swiperWrapper = document.getElementById('swiper-wrapper');
+            swiperWrapper.innerHTML = '';
+            const basePath = item.sort;
+            for (let i = 0; i <= item.count; i++) {
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide', 'flex', 'justify-center', 'items-center');
+                const img = document.createElement('img');
+                img.src = `${basePath}/${i}.webp`;
+                img.alt = `Image ${i}`;
+                img.classList.add('rounded-lg', 'max-w-[90%]', 'max-h-[90%]', 'object-contain');
+                slide.appendChild(img);
+                swiperWrapper.appendChild(slide);
+            }
+
+            if (swiper) {
+                swiper.destroy();
+            }
+
+            swiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+        function cardListeners() {
+
+            const cards = document.querySelectorAll('.image-card');
+            const swiperContainer = document.querySelector('.swiper-container');
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const type = card.dataset.type;
+                    const index = parseInt(card.dataset.index);
+                    const item = _products[type][index];
+
+                    if (item) {
+                        buildSwiper(item);
+                        swiperContainer.classList.remove('hidden');
+                        swiperContainer.classList.add('flex');
+                    } else {
+                        console.error("Item not found");
+                    }
+                });
+            });
+        }
+
+        function swiperLinsteners() {
+
+            const swiperContainer = document.querySelector('.swiper-container');
+            const closeButton = document.getElementById('close-swiper');
+
+            closeButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                swiperContainer.classList.remove('flex');
+                swiperContainer.classList.add('hidden');
+            });
+
+            swiperContainer.addEventListener('click', (event) => {
+                if (event.target === swiperContainer) {
+                    swiperContainer.classList.remove('flex');
+                    swiperContainer.classList.add('hidden');
+                }
+            });
+        }
+
+
+        function handleTabSwitch() {
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const tabButtons = document.querySelectorAll(".tab-btn");
+                const tabContents = document.querySelectorAll(".tab-content");
+                // Initial setup for the 'bag' tab
+                products('bag');
+                cardListeners();
+                swiperLinsteners();
+
+                tabButtons.forEach(button => {
+                    button.addEventListener("click", () => {
+                        const target = button.dataset.target;
+
+                        tabButtons.forEach(btn => {
+                            btn.classList.remove("bg-gradient-to-r", "from-purple-500", "to-pink-500");
+                            btn.classList.add("bg-gray-700");
+                        });
+
+                        tabContents.forEach(content => content.classList.add("hidden"));
+
+                        products(target);
+                        cardListeners();                // Attach listeners after rendering
+                        swiperLinsteners();
+                        document.getElementById(target).classList.remove("hidden");
+
+                        button.classList.add("bg-gradient-to-r", "from-purple-500", "to-pink-500");
+                        button.classList.remove("bg-gray-700");
+                    });
+                });
+            });
+        }
+
+
+        handleTabSwitch();
+    </script>
+</body>
+
+</html>
