@@ -24,7 +24,7 @@
 <body class="bg-slate-900 text-white">
     <header class="flex justify-between items-center p-5 border-b border-gray-700">
         <!-- <h1 class="text-2xl font-bold">LOGO</h1> -->
-        <img src="./public/logo.webp" class="w-8 h-8" alt="logo">
+        <img src="/public/logo.webp" class="w-8 h-8" alt="logo">
         <nav>
             <!-- <ul class="flex space-x-6">
                 <li><a href="#" class="hover:text-purple-400">Home</a></li>
@@ -35,7 +35,7 @@
         <!-- <button class="border px-4 py-2 rounded-lg border-gray-600 hover:bg-gray-800">Contact</button> -->
         <!-- <a href="https://wa.me/358415734122" target="_blank">WhatsApp</a> -->
         <a href="https://wa.me/358415734122" target="_blank" aria-label="Chat on WhatsApp">
-            <img src="./public/whatapp.svg" alt="" class="w-24 h-8">
+            <img src="/public/whatapp.svg" alt="" class="w-24 h-8">
         </a>
 
     </header>
@@ -54,8 +54,7 @@
         </div>
     </div>
 
-
-    <section class="w-[70%] m-auto">
+    <section class="w-[70%] m-auto pb-10">
         <div id="notebooks" class="tab-content w-full grid lg:grid-cols-3 xl:grid-cols-5 gap-6 p-6 m-auto">
         </div>
         <div id="pens" class="tab-content w-full grid lg:grid-cols-3 xl:grid-cols-5 gap-6 p-6 m-auto hidden">
@@ -148,7 +147,7 @@
                 const img = document.createElement('img');
                 img.src = `${item.sort}/0.webp`;
                 img.alt = item.title || 'Image';
-                img.className = 'h-[80%] w-auto';
+                img.className = 'h-[80%] w-full';
 
                 const textDiv = document.createElement('div');
                 textDiv.className = 'p-4';
