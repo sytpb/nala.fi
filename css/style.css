@@ -115,7 +115,7 @@ header .fa-bars {
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background: url(../images/home-bg.png) no-repeat;
+    background: url(../images/home-bg.avif) no-repeat;
     background-size: contain;
     background-position: center;
 }
